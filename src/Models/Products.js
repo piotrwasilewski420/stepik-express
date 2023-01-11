@@ -12,11 +12,11 @@ const ProductSchema = new Schema({
     },
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description: {
         type: String,
-        required: true
     }});
 ProductSchema.plugin(validator);
 const Product = mongoose.model('product', ProductSchema);

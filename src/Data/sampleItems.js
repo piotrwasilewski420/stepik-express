@@ -1,6 +1,5 @@
 const items = [
     {name: 'apple', price: 0.99, quantity: 10,description: 'A red apple'},
-    {name: 'pear', price: 1.99, quantity: 2,description: 'A green pear'},
     {name: 'orange', price: 1.29, quantity: 3,description: 'A orange'},
     {name: 'banana', price: 0.79, quantity: 5,description: 'A yellow banana'},
     {name: 'pineapple', price: 4.49, quantity: 41,description: 'A yellow pineapple'},

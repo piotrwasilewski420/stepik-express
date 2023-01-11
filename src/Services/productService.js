@@ -1,4 +1,4 @@
-const {Product } = require('./Products');
+const {Product } = require('../Models/Products');
 exports.getProducts = async (name,price,quantity) => {
     if (name) {
         const products = await Product.find({name: {$regex: name, $options: 'i'}}) 
@@ -30,3 +30,33 @@ exports.getProducts = async (name,price,quantity) => {
         return products;
     }
 }
+
+exports.createProduct = async (name, price, quantity) => {
+    const product = new Product({name, price, quantity});
+    try {
+        await product.save(); 
+        return product;
+    } catch (error) {
+        return {'message':error.message};
+    }
+}
+
+exports.updateProduct = async (id, name, price, quantity) => { 
+    try {
+    const product = await Product.findById(id); 
+    if (name) {
+        product.name = name;
+    }
+    if (price) {
+        product.price = price;
+    }
+    if (quantity) {
+        product.quantity = quantity;
+    }
+        await product.save();
+        return product;
+    }
+    catch (error) {
+        return {'message':error.message};
+    }
+};

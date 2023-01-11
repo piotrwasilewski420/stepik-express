@@ -1,9 +1,10 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const {mongoose} = require('mongoose');
-const {Product} = require('./src/Products');
-const items = require('./src/sampleItems');
-const productRouter = require('./src/productController');
+const {Product} = require('./src/Models/Products');
+const items = require('./src/Data/sampleItems');
+const productRouter = require('./src/Controllers/productController');
+const reportController = require('./src/Controllers/reportController');
 const app = express();
 app.use(express.json());
 // Load environment variables
@@ -14,8 +15,8 @@ async function start() {
     try {
         await mongoose.connect(process.env.MONGO_URI)
         // drop all documents in collection
-        Product.collection.drop();
-        Product.insertMany(items);
+        await Product.collection.drop();
+        await Product.insertMany(items);
         console.log(PORT);
         app.listen(PORT) 
     } catch (error) {
@@ -24,6 +25,7 @@ async function start() {
 }   
 
 app.use('/products', productRouter);
+app.use('/report',reportController)
  
 start();
 
