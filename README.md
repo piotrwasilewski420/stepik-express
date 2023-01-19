@@ -4,4 +4,4 @@
 
 
 ### Live demo available here
-[https://express-python.pwasil.pl/products](https://express-python.pwasil.pl/products)
+[https://stepik-express.pwasil.pl/products](https://stepik-express.pwasil.pl/products)
